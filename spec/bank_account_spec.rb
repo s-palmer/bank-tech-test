@@ -32,6 +32,11 @@ describe BankAccount do
       expect(@my_account.print_balance).to eq 10
     end
 
-    it "should add a new transaction to the transaction history"
+    it "should add a new transaction to the transaction history" do
+      Timecop.freeze(Date.new(2021, 11, 22))
+      @my_account.add_money(20)
+      @my_account.deduct_money(10)
+      expect(@my_account.transaction_history).to include ({ deposit: 0, withdraw: 10, date: "22/11/2021", new_balance: 10 })
+    end
   end
 end

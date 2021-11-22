@@ -18,6 +18,7 @@ class BankAccount
 
   def deduct_money(amount)
     @balance -= amount
+    @transaction_history << { deposit: 0, withdraw: amount, date: current_date, new_balance: @balance }
   end
 
   private
