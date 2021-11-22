@@ -1,9 +1,9 @@
 require "bank_account"
+require "timecop"
 
 describe BankAccount do
   before :each do
     @my_account = BankAccount.new
-    Timecop.freeze(Date.now(2021, 11, 22))
   end
 
   describe "#print_balance" do
@@ -19,6 +19,7 @@ describe BankAccount do
     end
 
     it "should add a new transaction to the transaction history" do
+      Timecop.freeze(Date.new(2021, 11, 22))
       @my_account.add_money(10)
       expect(@my_account.transaction_history).to include ({ deposit: 10, withdraw: 0, date: "2021/11/22", new_balance: 10 })
     end
