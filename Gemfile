@@ -9,4 +9,5 @@ group :development, :test do
   gem "rspec", "~> 3.10"
   gem "simplecov", require: false, group: :test
   gem "simplecov-console"
+  gem "timecop"
 end
