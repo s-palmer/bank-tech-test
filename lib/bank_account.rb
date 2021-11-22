@@ -1,8 +1,9 @@
 class BankAccount
   def initialize
+    @balance = 0
   end
 
   def print_balance
-    0
+    @balance
   end
 end

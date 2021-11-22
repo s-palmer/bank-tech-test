@@ -1,4 +1,4 @@
-require 'bank_account.rb'
+require 'bank_account'
 
 describe BankAccount do
 
