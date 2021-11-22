@@ -1,3 +1,5 @@
+require_relative './transaction' 
+
 class BankAccount
 
   attr_reader :transaction_history
@@ -13,7 +15,7 @@ class BankAccount
 
   def add_money(amount)
     @balance += amount
-    @transaction_history << { deposit: amount, withdraw: 0, date: current_date, new_balance: @balance }
+    @transaction_history << Transaction.new(amount, 0, current_date, @balance)
   end
 
   def deduct_money(amount)

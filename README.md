@@ -53,12 +53,14 @@ I want to be able to review account statements
 
 ### Class Model From User Stories
 
-![Class Model](ClassModel.png)
-
-Based on the user stories, I came up with the above initial class / method models to describe how I think my program will look.
+Based on the user stories, I came up with the following initial class / method models to describe how I think my program will look.
 From the requirements, I think I will need to create 2 classes, a Bank Account class and a Transaction class. The Bank Account class will be responsible for initialising an empty account and I added just one method for now, which is a print_balance method.
 
 The Transaction class will have 4 methods, and a Transaction History attribute. I expect that I will store a record of Transactions as an array of hashes, given that each transaction should consist of several pieces of information. I have currently given the Transaction class 4 methods - however I may look to extract the print_statement method out into its own Statement class. 
+
+![Class Model](ClassModel.png)
+
+After some consideration, I decided that my original thought process wasn't how I wanted to complete this challenge. As such, after creating my initial Bank Account class, I decided to implement more of my methods on this class instead of the Transaction class. Now my Bank account class will be responsible for storing a Transaction history, as well as instantiating new instances of my Transaction class every time a deposit or withdrawal is made. These Transaction instances will store the useful information that will be required when I create my Statement class that will handle the outputting of the formatted bank statements.
 
 ### Requirements
 * You should be able to interact with your code via a REPL like IRB or the JavaScript console. (You don't need to implement a command line interface that takes input from STDIN.)
