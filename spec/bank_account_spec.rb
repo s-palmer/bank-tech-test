@@ -43,4 +43,12 @@ describe BankAccount do
       expect(@my_account.transaction_history[1].new_balance).to eq 0
     end
   end
+
+  describe "#print_statement" do
+    it "should print out a nicely formatted statement" do
+      Timecop.freeze(Date.new(2021, 11, 22))
+      @my_account.add_money(10)
+      expect { @my_account.print_statement }.to output("date || credit || debit || balance\n22/11/2021 || 10.00 || 0.00 || 10.00\n").to_stdout
+    end
+  end
 end

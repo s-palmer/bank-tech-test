@@ -1,5 +1,11 @@
 # Bank tech test
 
+## Requirements
+* You should be able to interact with your code via a REPL like IRB or the JavaScript console. (You don't need to implement a command line interface that takes input from STDIN.)
+* Deposits, withdrawal.
+* Account statement (date, amount, balance) printing.
+* Data can be kept in memory (it doesn't need to be stored to a database or anything).
+
 ## Project Outline
 
 Language: Ruby
@@ -62,13 +68,8 @@ The Transaction class will have 4 methods, and a Transaction History attribute. 
 
 After some consideration, I decided that my original thought process wasn't how I wanted to complete this challenge. As such, after creating my initial Bank Account class, I decided to implement more of my methods on this class instead of the Transaction class. Now my Bank account class will be responsible for storing a Transaction history, as well as instantiating new instances of my Transaction class every time a deposit or withdrawal is made. These Transaction instances will store the useful information that will be required when I create my Statement class that will handle the outputting of the formatted bank statements.
 
-### Requirements
-* You should be able to interact with your code via a REPL like IRB or the JavaScript console. (You don't need to implement a command line interface that takes input from STDIN.)
-* Deposits, withdrawal.
-* Account statement (date, amount, balance) printing.
-* Data can be kept in memory (it doesn't need to be stored to a database or anything).
-
-
+### Edge Cases to consider
+* Becoming overdrawn - prevent transactions that would create a negative balance
 
 ## Acceptance criteria
 
