@@ -1,10 +1,10 @@
 class Transaction
-  attr_reader :deposit_amount, :withdrawal_amount, :transaction_date, :new_balance
+  attr_reader :dep_amount, :wd_amount, :txn_date, :new_balance
 
-  def initialize(dep, wd, date, bal)
-    @deposit_amount = dep
-    @withdrawal_amount = wd
-    @transaction_date = date
-    @new_balance = bal
+  def initialize(args)
+    @dep_amount = args[:dep]
+    @wd_amount = args[:wd]
+    @txn_date = args[:date]
+    @new_balance = args[:balance]
   end
 end

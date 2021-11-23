@@ -1,11 +1,12 @@
 require_relative "./transaction"
-require_relative "./statement"
+require 'bigdecimal/util'
+
 class BankAccount
-  attr_reader :transaction_history
+  attr_reader :txn_history
 
   def initialize
     @balance = 0
-    @transaction_history = []
+    @txn_history = []
   end
 
   def print_balance
@@ -14,26 +15,42 @@ class BankAccount
 
   def add_money(amount)
     @balance += amount
-    @transaction_history << Transaction.new(amount, "", current_date, @balance)
+    @txn_history << Transaction.new(dep: amount, date: current_date, balance: @balance)
   end
 
   def withdraw_money(amount)
     @balance -= amount
-    @transaction_history << Transaction.new("", amount, current_date, @balance)
+    @txn_history << Transaction.new(wd: amount, date: current_date, balance: @balance)
   end
 
   def print_statement
     headers
-    Statement.new(@transaction_history)
+    transactions
   end
 
   private
 
+  def transactions
+    output = ""
+    @txn_history.each do |txn|
+      if txn.dep_amount.nil?
+        output += "#{txn.txn_date} ||  || #{to_decimal(txn.wd_amount)} || #{to_decimal(txn.new_balance)} \n"
+      elsif txn.wd_amount.nil?
+        output += "#{txn.txn_date} || #{to_decimal(txn.dep_amount)} ||  || #{to_decimal(txn.new_balance)} \n"
+      end
+    end
+    puts output
+  end
+
   def current_date
-    current_date = Time.now.strftime("%d/%m/%Y")
+    date = Time.now.strftime("%d/%m/%Y")
   end
 
   def headers
     puts "date || credit || debit || balance"
+  end
+
+  def to_decimal(x, n = 2)
+    "%.#{n}f" % x.to_d.truncate(n)
   end
 end
