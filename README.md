@@ -38,11 +38,11 @@ $ account = BankAccount.new
 ```
 * Deposit money
 ```
-$ account.add_money(num)
+$ account.add(num)
 ```
 * Withdraw money
 ```
-$ account.withdraw_money(num)
+$ account.withdraw(num)
 ```
 * View balance
 ```
@@ -87,7 +87,7 @@ The Transaction class will have 4 methods, and a Transaction History attribute. 
 
 ![Class Model](ClassModel.png)
 
-After some consideration, I decided that my original thought process wasn't how I wanted to complete this challenge. As such, after creating my initial Bank Account class, I decided to implement more of my methods on this class instead of the Transaction class. Now my Bank account class will be responsible for storing a Transaction history, as well as instantiating new instances of my Transaction class every time a deposit or withdrawal is made. These Transaction instances will store the useful information that will be required when I create my Statement class that will handle the outputting of the formatted bank statements.
+After some consideration, I decided that my original thought process wasn't how I wanted to complete this challenge. As such, after creating my initial Bank Account class, I decided to implement more methods on this class instead of the Transaction class. Now my Bank account class will be responsible for storing a Transaction history, as well as instantiating new instances of my Transaction class every time a deposit or withdrawal is made. These Transaction instances will store the information that will be required for creating formatted statements.
 
 ### Edge Cases to consider
 * Becoming overdrawn - prevent transactions that would create a negative balance
