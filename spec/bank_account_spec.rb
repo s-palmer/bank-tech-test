@@ -48,7 +48,7 @@ describe BankAccount do
     it "should print out a nicely formatted statement" do
       Timecop.freeze(Date.new(2021, 11, 22))
       @my_account.add_money(10)
-      expect { @my_account.print_statement }.to output("date || credit || debit || balance\n22/11/2021 || 10.00 || 0.00 || 10.00\n").to_stdout
+      expect { @my_account.print_statement }.to output("date || credit || debit || balance\n22/11/2021 || 10.00 ||  || 10.00\n").to_stdout
     end
   end
 end
