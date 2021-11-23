@@ -14,12 +14,12 @@ class BankAccount
 
   def add_money(amount)
     @balance += amount
-    @transaction_history << Transaction.new(amount, 0, current_date, @balance)
+    @transaction_history << Transaction.new(amount, "", current_date, @balance)
   end
 
-  def deduct_money(amount)
+  def withdraw_money(amount)
     @balance -= amount
-    @transaction_history << Transaction.new(0, amount, current_date, @balance)
+    @transaction_history << Transaction.new("", amount, current_date, @balance)
   end
 
   def print_statement

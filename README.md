@@ -29,7 +29,28 @@ $ bundle install
 ```
 You will then be able to launch the application into IRB by running:
 ```
-$ irb -r ./lib/bank-account.rb
+$ irb -r ./lib/bank_account.rb
+```
+In IRB, you can then interact in the following ways:
+* Create a new account
+```
+$ account = BankAccount.new
+```
+* Deposit money
+```
+$ account.add_money(num)
+```
+* Withdraw money
+```
+$ account.withdraw_money(num)
+```
+* View balance
+```
+$ account.print_balance
+```
+* Print Account Statement
+```
+$ account.print_statement
 ```
 
 ## Specification

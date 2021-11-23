@@ -27,17 +27,17 @@ describe BankAccount do
     end
   end
 
-  describe "#deduct_money" do
+  describe "#withdraw_money" do
     it "should remove money from the account" do
       @my_account.add_money(20)
-      @my_account.deduct_money(10)
+      @my_account.withdraw_money(10)
       expect(@my_account.print_balance).to eq 10
     end
 
     it "should add a new withdrawal transaction to the transaction history" do
       Timecop.freeze(Date.new(2021, 11, 22))
       @my_account.add_money(10)
-      @my_account.deduct_money(10)
+      @my_account.withdraw_money(10)
       expect(@my_account.transaction_history[1].withdrawal_amount).to eq 10
       expect(@my_account.transaction_history[1].transaction_date).to eq "22/11/2021"
       expect(@my_account.transaction_history[1].new_balance).to eq 0

@@ -4,9 +4,9 @@ class Statement
     transaction_history.each do |transaction|
       print transaction.transaction_date
       dividers
-      print to_decimal(transaction.deposit_amount)
+      print to_decimal(transaction.deposit_amount) unless transaction.deposit_amount == ""
       dividers
-      print to_decimal(transaction.withdrawal_amount)
+      print to_decimal(transaction.withdrawal_amount) unless transaction.withdrawal_amount == ""
       dividers
       print to_decimal(transaction.new_balance)
       puts
