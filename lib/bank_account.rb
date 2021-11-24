@@ -2,7 +2,7 @@ require_relative "./transaction"
 require 'bigdecimal/util'
 
 class BankAccount
-  attr_reader :txn_history
+  attr_reader :txn_history, :balance
 
   def initialize
     @balance = 0
