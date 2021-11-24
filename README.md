@@ -38,7 +38,7 @@ $ account = BankAccount.new
 ```
 * Deposit money
 ```
-$ account.add(num)
+$ account.deposit(num)
 ```
 * Withdraw money
 ```
