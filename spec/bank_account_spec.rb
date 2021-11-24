@@ -21,9 +21,9 @@ describe BankAccount do
     it "should add a new transaction to the transaction history" do
       Timecop.freeze(Date.new(2021, 11, 22))
       @my_account.deposit(10)
-      expect(@my_account.txn_history.first.dep_amount).to eq 10
-      expect(@my_account.txn_history.first.txn_date).to eq "22/11/2021"
-      expect(@my_account.txn_history.first.new_balance).to eq 10
+      expect(@my_account.transaction_history.first.dep_amount).to eq 10
+      expect(@my_account.transaction_history.first.transaction_date).to eq "22/11/2021"
+      expect(@my_account.transaction_history.first.new_balance).to eq 10
     end
   end
 
@@ -38,9 +38,9 @@ describe BankAccount do
       Timecop.freeze(Date.new(2021, 11, 22))
       @my_account.deposit(10)
       @my_account.withdraw(10)
-      expect(@my_account.txn_history.last.wd_amount).to eq 10
-      expect(@my_account.txn_history.last.txn_date).to eq "22/11/2021"
-      expect(@my_account.txn_history.last.new_balance).to eq 0
+      expect(@my_account.transaction_history.last.wd_amount).to eq 10
+      expect(@my_account.transaction_history.last.transaction_date).to eq "22/11/2021"
+      expect(@my_account.transaction_history.last.new_balance).to eq 0
     end
   end
 

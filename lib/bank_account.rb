@@ -2,11 +2,11 @@ require_relative "./transaction"
 require 'bigdecimal/util'
 
 class BankAccount
-  attr_reader :txn_history, :balance
+  attr_reader :transaction_history, :balance
 
   def initialize
     @balance = 0
-    @txn_history = []
+    @transaction_history = []
   end
 
   def print_balance
@@ -15,12 +15,12 @@ class BankAccount
 
   def deposit(amount)
     @balance += amount
-    @txn_history << Transaction.new(dep: amount, date: current_date, balance: @balance)
+    @transaction_history << Transaction.new(dep: amount, date: current_date, balance: @balance)
   end
 
   def withdraw(amount)
     @balance -= amount
-    @txn_history << Transaction.new(wd: amount, date: current_date, balance: @balance)
+    @transaction_history << Transaction.new(wd: amount, date: current_date, balance: @balance)
   end
 
   def print_statement
@@ -32,11 +32,11 @@ class BankAccount
 
   def transactions
     output = ""
-    @txn_history.each do |txn|
-      if txn.dep_amount.nil?
-        output += "#{txn.txn_date} ||  || #{to_decimal(txn.wd_amount)} || #{to_decimal(txn.new_balance)} \n"
-      elsif txn.wd_amount.nil?
-        output += "#{txn.txn_date} || #{to_decimal(txn.dep_amount)} ||  || #{to_decimal(txn.new_balance)} \n"
+    @transaction_history.each do |transaction|
+      if transaction.dep_amount.nil?
+        output += "#{transaction.transaction_date} ||  || #{to_decimal(transaction.wd_amount)} || #{to_decimal(transaction.new_balance)} \n"
+      elsif transaction.wd_amount.nil?
+        output += "#{transaction.transaction_date} || #{to_decimal(transaction.dep_amount)} ||  || #{to_decimal(transaction.new_balance)} \n"
       end
     end
     puts output
