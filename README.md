@@ -53,6 +53,13 @@ $ account.print_balance
 $ account.print_statement
 ```
 
+## Program Screenshot
+
+![Working Program](screenshot.png)
+## Test Coverage
+
+![Test Coverage](test_coverage.png)
+
 ## Specification
 
 ### Creating User Stories From Requirements
@@ -81,13 +88,21 @@ I want to be able to review account statements
 ### Class Model From User Stories
 
 Based on the user stories, I came up with the following initial class / method models to describe how I think my program will look.
-From the requirements, I think I will need to create 2 classes, a Bank Account class and a Transaction class. The Bank Account class will be responsible for initialising an empty account and I added just one method for now, which is a print_balance method.
+From the requirements, I initially decided to create 2 classes, a Bank Account class and a Transaction class. 
 
-The Transaction class will have 4 methods, and a Transaction History attribute. I expect that I will store a record of Transactions as an array of hashes, given that each transaction should consist of several pieces of information. I have currently given the Transaction class 4 methods - however I may look to extract the print_statement method out into its own Statement class. 
+The Bank Account class will be responsible for initialising an empty account and contains just one method for now, which is a print_balance method.
+
+The Transaction class will have 4 methods, and a Transaction History attribute to store a record of Transactions. I have currently given the Transaction class 4 methods - however I may look to extract the print_statement method out into its own Statement class. 
 
 ![Class Model](ClassModel.png)
 
-After some consideration, I decided that my original thought process wasn't how I wanted to complete this challenge. As such, after creating my initial Bank Account class, I decided to implement more methods on this class instead of the Transaction class. Now my Bank account class will be responsible for storing a Transaction history, as well as instantiating new instances of my Transaction class every time a deposit or withdrawal is made. These Transaction instances will store the information that will be required for creating formatted statements.
+After some consideration, I decided that my original plan wasn't how I wanted to complete this challenge, and didn't make sense.
+
+As such, after creating my initial Bank Account class, I decided to implement more methods on this class instead of the Transaction class, including depositing and withdrawing.
+
+ Now each instance of the Bank account class will be responsible for storing its own Transaction history, as well as instantiating new instances of the Transaction class every time a deposit or withdrawal is made. These Transaction instances will store the information that will be required for creating formatted statements.
+
+I tried to further break out classes by creating a Statement class to be responsible for printing the formatted statements. However, due to issues mocking the Transactions to be inserted, I rolled back my code. I tried to use doubles of my Transaction class instances to do this - however it was unsuccesful. 
 
 ### Edge Cases to consider
 * Becoming overdrawn - prevent transactions that would create a negative balance
