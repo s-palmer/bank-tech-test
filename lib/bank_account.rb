@@ -32,7 +32,7 @@ class BankAccount
 
   def transactions
     output = ""
-    @transaction_history.each do |transaction|
+    @transaction_history.reverse.each do |transaction|
       if transaction.dep_amount.nil?
         output += "#{transaction.transaction_date} ||  || #{to_decimal(transaction.wd_amount)} || #{to_decimal(transaction.new_balance)} \n"
       elsif transaction.wd_amount.nil?
